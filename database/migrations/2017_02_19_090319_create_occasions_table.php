@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminsTable extends Migration
+class CreateOccasionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +12,9 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('occasions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('admin_name');
-            $table->string('admin_email_address')->unique();
-            $table->string('admin_password');
-            $table->boolean('access_label');
+            $table->string('occasion_name');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::drop('occasions');
     }
 }

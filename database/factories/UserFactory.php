@@ -21,3 +21,24 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+
+
+$factory->define(App\Eproduct::class, function (Faker $faker) {
+    $product_type=['regular', 'featured', 'special'];
+
+    return [
+        'ecategory_id'=> App\Ecategory::all()->random()->id,
+        'occasion_id'=> App\Occasion::all()->random()->id,
+        'product_title' => $faker->name,
+        
+        'product_description' => $faker->paragraph(random_int(1,20)),
+
+        'product_image' => 'img'.$faker->randomDigit().'.jpg',
+        'product_price' =>  $faker->randomFloat(2,1,100),
+        'product_type' => $product_type[rand(0,2)] ,
+        'product_quantity' => $faker->randomDigit(),
+        'publication_status' => 1,
+    ];
+});
